@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.didi.libnetwork.cache.Cache
+import com.didi.libnetwork.cache.CacheDatabase
 import com.example.libnavannotation.FragmentDestination
 import com.example.ppjoke.databinding.FragmentHomeBinding
 
@@ -34,6 +36,7 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
     }
 

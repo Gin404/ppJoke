@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.ppjoke.ui.dashboard.DashboardFragment"
+        android:name="com.example.ppjoke.ui.find.FindFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_find" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.ppjoke.ui.notifications.NotificationsFragment"
+        android:name="com.example.ppjoke.ui.my.MyFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_my" />
 </navigation>

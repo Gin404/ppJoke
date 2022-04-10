@@ -1,13 +1,13 @@
-package com.example.ppjoke.ui.dashboard
+package com.example.ppjoke.ui.my
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class MyViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is my Fragment"
     }
     val text: LiveData<String> = _text
 }

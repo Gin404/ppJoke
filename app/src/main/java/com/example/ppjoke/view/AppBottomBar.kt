@@ -1,16 +1,23 @@
 package com.example.ppjoke.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.text.TextUtils
 import android.util.AttributeSet
+import android.util.Log
 import com.example.ppjoke.R
 import com.example.ppjoke.utils.AppConfig
+import com.example.ppjoke.utils.dp2px
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+@SuppressLint("RestrictedApi")
 class AppBottomBar @JvmOverloads constructor(context: Context,
-                   attrs: AttributeSet? = null,
-                   defStyleAttr: Int = 0): BottomNavigationView(context, attrs, defStyleAttr) {
+                                             attrs: AttributeSet? = null,
+                                             defStyleAttr: Int = 0): BottomNavigationView(context, attrs, defStyleAttr) {
     companion object {
         private val sIcons = arrayOf(
             R.drawable.icon_tab_home,
@@ -50,6 +57,20 @@ class AppBottomBar @JvmOverloads constructor(context: Context,
             }
             val item = menu.add(0, id, tab.index, tab.title)
             item.setIcon(sIcons[tab.index])
+        }
+        val menuView = getChildAt(0) as BottomNavigationMenuView
+
+        for (tab in bottomBar.tabs) {
+            val iconSize = dp2px(tab.size)
+
+            val itemView = menuView.getChildAt(tab.index) as BottomNavigationItemView
+
+            itemView.setIconSize(iconSize)
+
+            if (TextUtils.isEmpty(tab.title)) {
+                itemView.setIconTintList(ColorStateList.valueOf(Color.parseColor(tab.tintColor)))
+                itemView.setShifting(false)
+            }
         }
     }
 

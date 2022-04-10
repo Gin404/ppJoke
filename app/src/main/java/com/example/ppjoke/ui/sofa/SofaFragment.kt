@@ -1,19 +1,22 @@
-package com.example.ppjoke.ui.dashboard
+package com.example.ppjoke.ui.sofa
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.libnavannotation.FragmentDestination
-import com.example.ppjoke.databinding.FragmentDashboardBinding
+import com.example.ppjoke.databinding.FragmentSofaBinding
+import com.example.ppjoke.ui.publish.PublishViewModel
 
-@FragmentDestination(pageUrl = "main/tabs/dash", asStarter = false)
-class DashboardFragment : Fragment() {
-
-    private var _binding: FragmentDashboardBinding? = null
+/**
+ * @author: zangjin
+ * @date: 2022/4/4
+ */
+@FragmentDestination(pageUrl = "main/tabs/sofa", asStarter = false)
+class SofaFragment: Fragment() {
+    private var _binding: FragmentSofaBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,15 +27,12 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        val viewModel =
+            ViewModelProvider(this).get(SofaViewModel::class.java)
+        _binding = FragmentSofaBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        viewModel.text.observe(viewLifecycleOwner) {
+            binding.textSofa.text = it
         }
         return root
     }

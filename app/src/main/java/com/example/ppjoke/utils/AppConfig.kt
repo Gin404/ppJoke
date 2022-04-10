@@ -2,6 +2,7 @@ package com.example.ppjoke.utils
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.TypeReference
+import com.didi.libcommon.utils.AppGlobals
 import com.example.ppjoke.model.BottomBar
 import com.example.ppjoke.model.Destination
 import java.io.BufferedReader
@@ -24,7 +25,7 @@ object AppConfig {
     }
 
     private fun parseFile(fileName: String):  String {
-        val assets = AppGlobals.sApplication.assets
+        val assets = AppGlobals.getApplication().assets
 
         var stream: InputStream? = null
         val builder = StringBuilder()

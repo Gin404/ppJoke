@@ -1,19 +1,21 @@
-package com.example.ppjoke.ui.notifications
+package com.example.ppjoke.ui.publish
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.libnavannotation.FragmentDestination
-import com.example.ppjoke.databinding.FragmentNotificationsBinding
+import com.example.ppjoke.databinding.FragmentPublishBinding
 
-@FragmentDestination(pageUrl = "main/tabs/notification", asStarter = false)
-class NotificationsFragment : Fragment() {
-
-    private var _binding: FragmentNotificationsBinding? = null
+/**
+ * @author: zangjin
+ * @date: 2022/4/4
+ */
+@FragmentDestination(pageUrl = "main/tabs/publish", asStarter = false)
+class PublishFragment: Fragment() {
+    private var _binding: FragmentPublishBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,15 +26,13 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        val viewModel =
+            ViewModelProvider(this).get(PublishViewModel::class.java)
+        _binding = FragmentPublishBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        viewModel.text.observe(viewLifecycleOwner) {
+            binding.textPublish.text = it
         }
         return root
     }
